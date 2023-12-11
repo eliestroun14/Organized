@@ -8,17 +8,15 @@
 #include "../../include/my.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int disp(void *data, char **args)
+int disp(void *data, UNUSED char **args)
 {
     linked_list_t *tmp = *((linked_list_t **)data);
 
     while (tmp != NULL) {
         my_printf("%s n°%d - \"%s\"\n", type[(tmp)->data.type],
         tmp->data.id, tmp->data.name);
-        printf("%p\n", tmp);
-        printf("%p\n", tmp->next);
-        
         tmp = tmp->next;
     }
     return 0;

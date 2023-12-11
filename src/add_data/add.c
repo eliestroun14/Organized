@@ -9,10 +9,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-/* char const *type[] = {"ACTUATOR", "DEVICE", "PROCESSOR",
-    "SENSOR", "WIRE", NULL};
-TYPE_e enum_tab[] = {ACTUATOR, DEVICE, PROCESSOR, SENSOR, WIRE }; */
-
 static int handle_err(char **args)
 {
     int count = 0;
@@ -34,9 +30,9 @@ static int check_type(char *arg)
     return 0;
 }
 
-static int handle_add(linked_list_t *new_node,
-    linked_list_t **head, char **args, int i)
+static int handle_add(linked_list_t **head, char **args, int i)
 {
+    linked_list_t *new_node = malloc(sizeof(linked_list_t));
     int j = check_type(args[i]);
 
     if (j == 0)
@@ -59,12 +55,11 @@ static int handle_add(linked_list_t *new_node,
 int add(void *data, char **args)
 {
     linked_list_t **head = (linked_list_t **)data;
-    linked_list_t *new_node = malloc(sizeof(linked_list_t));
 
     if (!handle_err(args))
         return 84;
     for (int i = 0; args[i] != NULL; i += 2) {
-        if (!handle_add(new_node, head, args, i))
+        if (!handle_add(head, args, i))
             return 84;
     }
     return 0;

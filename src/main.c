@@ -8,7 +8,7 @@
 #include "../include/shell.h"
 #include <stddef.h>
 
-int main(int ac, char const **av)
+int main(int ac, UNUSED char const **av)
 {
     linked_list_t *head = NULL;
 

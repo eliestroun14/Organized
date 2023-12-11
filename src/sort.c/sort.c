@@ -4,8 +4,12 @@
 ** File description:
 ** sort
 */
+#include "../../include/shell.h"
+#include "../../include/my.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-int sort(void *data, char **args)
+int sort(UNUSED void *data, UNUSED char **args)
 {
     return 0;
 }

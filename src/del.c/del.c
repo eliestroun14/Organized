@@ -4,8 +4,12 @@
 ** File description:
 ** del
 */
+#include "../../include/shell.h"
+#include "../../include/my.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-int del(void *data, char **args)
+int del(UNUSED void *data, UNUSED char **args)
 {
     return 0;
 }

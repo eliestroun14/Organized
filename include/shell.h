@@ -27,7 +27,6 @@ typedef struct organize_s {
 } organize_t;
 
 typedef struct linked_list_s {
-    struct linked_list_s *previous;
     organize_t data;
     struct linked_list_s *next;
 } linked_list_t;

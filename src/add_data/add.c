@@ -43,7 +43,7 @@ static int handle_add(linked_list_t **head, char **args, int i)
         new_node->data.id = (*head)->data.id + 1;
     new_node->data.name = my_strdup(args[i + 1]);
     new_node->data.type = enum_tab[j];
-    my_printf("%s n°%d - \"%s\" added\n", type[j], new_node->data.id,
+    my_printf("%s n°%d - \"%s\" added.\n", type[j], new_node->data.id,
         new_node->data.name);
     new_node->next = (*head);
     (*head) = new_node;

@@ -10,10 +10,12 @@
 
 int main(int ac, UNUSED char const **av)
 {
-    linked_list_t *head = NULL;
+    gloabal_link_t tot_link;
 
+    tot_link.nb_link = 0;
+    tot_link.head = NULL;
     if (ac != 1)
         return 84;
-    workshop_shell(&head);
+    workshop_shell(&tot_link);
     return 0;
 }

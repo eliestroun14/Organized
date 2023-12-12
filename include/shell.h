@@ -31,6 +31,11 @@ typedef struct linked_list_s {
     struct linked_list_s *next;
 } linked_list_t;
 
+typedef struct gloabal_link_s {
+    linked_list_t *head;
+    int nb_link;
+} gloabal_link_t;
+
 USED static char const *type[] = {"ACTUATOR", "DEVICE", "PROCESSOR",
     "SENSOR", "WIRE", NULL};
 USED static TYPE_e enum_tab[] = {ACTUATOR, DEVICE, PROCESSOR, SENSOR, WIRE };

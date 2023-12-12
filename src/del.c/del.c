@@ -34,7 +34,7 @@ static void del_tail(linked_list_t *tmp, linked_list_t *previous)
 }
 
 static void handle_del(char *args, linked_list_t *previous,
-linked_list_t **begin, linked_list_t *tmp)
+    linked_list_t **begin, linked_list_t *tmp)
 {
     if (my_getnbr(args) == tmp->data.id) {
         if (previous == NULL) {
@@ -44,8 +44,7 @@ linked_list_t **begin, linked_list_t *tmp)
         if (tmp->next == NULL) {
             del_tail(tmp, previous);
             return;
-        }
-        else {
+        } else {
             print_del(tmp);
             free(tmp->data.name);
             previous->next = tmp->next;
@@ -64,7 +63,7 @@ int del(void *data, UNUSED char **args)
     for (int i = 0; args[i] != NULL; i++) {
     tmp = *begin;
     previous = NULL;
-        while(tmp != NULL) {
+        while (tmp != NULL) {
             handle_del(args[i], previous, begin, tmp);
             previous = tmp;
             tmp = tmp->next;

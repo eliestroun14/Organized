@@ -12,10 +12,11 @@
 
 int disp(void *data, UNUSED char **args)
 {
+    linked_list_t *tmp;
+
     if (args[0] != NULL)
         return 84;
-    linked_list_t *tmp = *((linked_list_t **)data);
-
+    tmp = *((linked_list_t **)data);
     while (tmp != NULL) {
         my_printf("%s n°%d - \"%s\"\n", type[(tmp)->data.type],
         tmp->data.id, tmp->data.name);

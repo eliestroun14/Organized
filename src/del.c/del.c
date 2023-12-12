@@ -56,8 +56,9 @@ static int handle_del(char *args, linked_list_t *previous,
     return 0;
 }
 
-int handle_err_del(char *arg)
+static int handle_err_del(char *arg)
 {
+
     for (int j = 0; arg[j] != '\0'; j++) {
         if (!is_digit(arg[j]))
             return 84;
@@ -71,7 +72,9 @@ int del(void *data, UNUSED char **args)
     linked_list_t *tmp;
     linked_list_t *previous;
 
-    for (int i = 0; args[i]; i++)
+    if (args[0] == NULL)
+        return 84;
+    for (int i = 0; args[i] != NULL; i++)
         if (handle_err_del(args[i]) == 84)
             return 84;
     for (int i = 0; args[i] != NULL; i++) {

@@ -11,5 +11,7 @@
 
 int sort(UNUSED void *data, UNUSED char **args)
 {
+    for (int i = 0; args[i] != NULL; i++)
+        my_printf("arg[%d] = [%s]\n", i, args[i]);
     return 0;
 }

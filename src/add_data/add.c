@@ -9,10 +9,12 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static int handle_err(char **args)
+static int handle_err_add(char **args)
 {
     int count = 0;
 
+    if (args[0] == NULL)
+        return 0;
     for (; args[count] != NULL; count++);
     if (count % 2 != 0)
         return 0;
@@ -54,7 +56,7 @@ int add(void *data, char **args)
 {
     gloabal_link_t *global = (gloabal_link_t *)data;
 
-    if (!handle_err(args))
+    if (!handle_err_add(args))
         return 84;
     for (int i = 0; args[i] != NULL; i += 2) {
         if (!handle_add(&global->head, args, i, global))

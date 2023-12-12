@@ -12,6 +12,8 @@
 
 int disp(void *data, UNUSED char **args)
 {
+    if (args[0] != NULL)
+        return 84;
     linked_list_t *tmp = *((linked_list_t **)data);
 
     while (tmp != NULL) {

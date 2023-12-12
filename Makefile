@@ -13,7 +13,7 @@ SRC		+= ./src/disp.c/disp.c
 SRC		+= ./src/sort.c/sort.c
 SRC		+= ./src/del.c/del.c
 
-LDFLAGS	= -L. -lmy -lshell -I include/ -g -Wall -Wextra
+LDFLAGS	= -L. -lmy -lshell -I include/ -g -Wall -Wextra -pedantic
 
 LIB	= make -C lib/
 

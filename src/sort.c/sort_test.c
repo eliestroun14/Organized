@@ -32,7 +32,7 @@ static int is_reverse_flag(char *arg)
     return 0;
 }
 
-int fill_order(order_t *tab_order, char **args, int count_nb)
+static int fill_order(order_t *tab_order, char **args, int count_nb)
 {
     int index = 0;
     int tab_index;
@@ -50,11 +50,7 @@ int fill_order(order_t *tab_order, char **args, int count_nb)
     return 0;
 }
 
-//static void perform_sorting(linked_list_t order_t *tab_order, int num_orders)
-//{
-//    return 0;
-//}
-void sub_malloc_tab_order(char **args, int i, int *count_param)
+static void sub_malloc_tab_order(char **args, int i, int *count_param)
 {
     for (int j = 0; sort_param[j] != NULL; j++) {
         if (!my_strcmp(args[i], sort_param[j]))
@@ -62,7 +58,7 @@ void sub_malloc_tab_order(char **args, int i, int *count_param)
     }
 }
 
-order_t *malloc_tab_order(char **args, int *count_param)
+static order_t *malloc_tab_order(char **args, int *count_param)
 {
     order_t *tab_order = NULL;
 
@@ -73,6 +69,10 @@ order_t *malloc_tab_order(char **args, int *count_param)
     return tab_order;
 }
 
+//static void perform_sorting(linked_list_t order_t *tab_order, int num_orders)
+//{
+//    return 0;
+//}
 int sort(UNUSED void *data, UNUSED char **args)
 {
     int count_param = 0;

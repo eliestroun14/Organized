@@ -20,6 +20,18 @@ typedef enum TYPE_s {
     WIRE
 } TYPE_e;
 
+typedef enum ORDER_S {
+    EMPTY,
+    TYPE,
+    NAME,
+    ID,
+} ORDER_E;
+
+typedef struct order_s {
+    ORDER_E order;
+    int is_reverse;
+} order_t;
+
 typedef struct organize_s {
     TYPE_e type;
     char *name;

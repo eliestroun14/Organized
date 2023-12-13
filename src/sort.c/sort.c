@@ -20,7 +20,7 @@ static int handle_err_sort(char *arg)
     return 0;
 }
 
-order_t *malloc_tab_order(char **args, int *count_param)
+/* order_t *malloc_tab_order(char **args, int *count_param)
 {
     order_t *tab_order = NULL;
 
@@ -32,7 +32,7 @@ order_t *malloc_tab_order(char **args, int *count_param)
     }
     tab_order = malloc(sizeof(order_t) * ((*count_param) + 1));
     return tab_order;
-}
+} */
 
 int get_order(char *arg)
 {
@@ -71,8 +71,6 @@ int handle_sort(linked_list_t **head, char **args)
 
 int sort(UNUSED void *data, UNUSED char **args)
 {
-    //int count_param = 0;
-    //order_t *tab_order = malloc_tab_order(args, &count_param);
     gloabal_link_t *global = (gloabal_link_t *)data;
 
     if (args[0] == NULL || !my_strcmp(args[0], "-r"))
@@ -80,7 +78,5 @@ int sort(UNUSED void *data, UNUSED char **args)
     for (int i = 0; args[i] != NULL; i++)
         if (!handle_err_sort(args[i]))
             return 84;
-
-    handle_sort(&global->head, args)
     return 0;
 }

@@ -33,7 +33,6 @@ static int handle_err_sort(char *arg)
     tab_order = malloc(sizeof(order_t) * ((*count_param) + 1));
     return tab_order;
 } */
-
 int get_order(char *arg)
 {
     for (int i = 0; sort_param[i] != NULL; i++) {

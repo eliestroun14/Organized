@@ -65,24 +65,39 @@ static int handle_err_del(char *arg)
     return 0;
 }
 
-int del(void *data, UNUSED char **args)
+void check_del(char *arg, linked_list_t **previous,
+    gloabal_link_t **global, linked_list_t **tmp)
 {
-    gloabal_link_t *global = (gloabal_link_t *)data;
-    linked_list_t *tmp;
-    linked_list_t *previous;
+    if (!handle_del(arg, *previous, &(*global)->head, *tmp))
+        *previous = *tmp;
+}
 
+int handle_all_err_del(char **args)
+{
     if (args[0] == NULL)
         return 84;
     for (int i = 0; args[i] != NULL; i++)
         if (handle_err_del(args[i]) == 84)
             return 84;
+    return 0;
+}
+
+int del(void *data, UNUSED char **args)
+{
+    gloabal_link_t *global = (gloabal_link_t *)data;
+    linked_list_t *tmp;
+    linked_list_t *previous;
+    linked_list_t *savior;
+
+    if (handle_all_err_del(args) == 84)
+        return 84;
     for (int i = 0; args[i] != NULL; i++) {
-    tmp = global->head;
-    previous = NULL;
+        tmp = global->head;
+        previous = NULL;
         while (tmp != NULL) {
-            handle_del(args[i], previous, &global->head, tmp);
-            previous = tmp;
-            tmp = tmp->next;
+            savior = tmp->next;
+            check_del(args[i], &previous, &global, &tmp);
+            tmp = savior;
         }
     }
     return 0;

@@ -16,5 +16,7 @@ int main(int ac, UNUSED char const **av)
     tot_link.head = NULL;
     if (ac != 1)
         return 84;
-    return workshop_shell(&tot_link);
+    if (workshop_shell(&tot_link) == 84)
+        return 84;
+    return 0;
 }

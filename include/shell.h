@@ -20,11 +20,11 @@ typedef enum TYPE_s {
     WIRE
 } TYPE_e;
 
-typedef enum ORDER_S {
+typedef enum ORDER {
     EMPTY,
     TYPE,
     NAME,
-    ID,
+    ID
 } ORDER_E;
 
 typedef struct order_s {

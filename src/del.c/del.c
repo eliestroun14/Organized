@@ -58,7 +58,6 @@ static int handle_del(char *args, linked_list_t *previous,
 
 static int handle_err_del(char *arg)
 {
-
     for (int j = 0; arg[j] != '\0'; j++) {
         if (!is_digit(arg[j]))
             return 84;

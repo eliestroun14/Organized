@@ -16,7 +16,7 @@ linked_list_t *merge_name_rev(linked_list_t *left, linked_list_t *right)
     if (right == NULL) {
         return left;
     }
-    if (my_strcmp(left->data.name, right->data.name) >= 0) {
+    if (my_strcmp(left->data.name, right->data.name) > 0) {
         left->next = merge_name_rev(left->next, right);
         return left;
     } else {

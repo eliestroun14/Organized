@@ -59,7 +59,7 @@ int sort(void *data, char **args);
 int disp(void *data, char **args);
 
 // split merge
-void split(linked_list_t* head, linked_list_t** front, linked_list_t** back);
+void split(linked_list_t *head, linked_list_t **front, linked_list_t **back);
 
 // merge sorts
 void merge_sort_id(linked_list_t **head_ref);

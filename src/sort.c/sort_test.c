@@ -73,25 +73,22 @@ void handle_all_sort(order_t *tab_order, linked_list_t **head,
     int tab_order_len)
 {
     if (tab_order[0].order == TYPE) {
-        if (tab_order[0].is_reverse) {
+        if (tab_order[0].is_reverse)
             merge_sort_type_rev(head);
-            return;
-        }
-        merge_sort_type(head);
+        else
+            merge_sort_type(head);
     }
     if (tab_order[0].order == NAME) {
-        if (tab_order[0].is_reverse) {
-            //merge_sort_name_reverse();
-            return;
-        }
-        //merge_sort_name();
+        if (tab_order[0].is_reverse)
+            merge_sort_name_rev(head);
+        else
+            merge_sort_name(head);
     }
     if (tab_order[0].order == ID) {
-        if (tab_order[0].is_reverse) {
+        if (tab_order[0].is_reverse)
             merge_sort_id_rev(head);
-            return;
-        }
-        merge_sort_id(head);
+        else
+            merge_sort_id(head);
     }
     return;
 }

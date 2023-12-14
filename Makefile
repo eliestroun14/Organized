@@ -19,6 +19,8 @@ SRC		+= ./src/sort.c/merge_sort_id.c
 SRC		+= ./src/sort.c/merge_sort_id_rev.c
 SRC		+= ./src/sort.c/merge_sort_type.c
 SRC		+= ./src/sort.c/merge_sort_type_rev.c
+SRC		+= ./src/sort.c/merge_sort_name.c
+SRC		+= ./src/sort.c/merge_sort_name_rev.c
 
 OBJS	= $(SRC:.c=.o)
 

@@ -29,7 +29,7 @@ static int check_type(char *arg)
         if (!my_strcmp(arg, type[i])) {
             return i;
         }
-    return 0;
+    return -1;
 }
 
 static int handle_add(linked_list_t **head, char **args, int i,
@@ -38,7 +38,7 @@ static int handle_add(linked_list_t **head, char **args, int i,
     linked_list_t *new_node = malloc(sizeof(linked_list_t));
     int j = check_type(args[i]);
 
-    if (j == 0)
+    if (j == -1)
             return 0;
     else
     new_node->data.id = global->nb_link;

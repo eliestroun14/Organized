@@ -10,7 +10,7 @@ NAME	= organized
 SRC		= ./src/main.c
 SRC		+= ./src/add_data/add.c
 SRC		+= ./src/disp.c/disp.c
-SRC		+= ./src/sort.c/sort_test.c
+SRC		+= ./src/sort.c/sort.c
 SRC		+= ./src/del.c/del.c
 
 SRC		+= ./src/sort.c/merge_split.c

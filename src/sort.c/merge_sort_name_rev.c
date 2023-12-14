@@ -8,34 +8,35 @@
 #include "../../include/my.h"
 #include <stddef.h>
 
-linked_list_t *merge_name_rev(linked_list_t *left, linked_list_t *right)
+linked_list_t *merge_name_rev(linked_list_t *left_split,
+    linked_list_t *right_split)
 {
-    if (left == NULL) {
-        return right;
+    if (left_split == NULL) {
+        return right_split;
     }
-    if (right == NULL) {
-        return left;
+    if (right_split == NULL) {
+        return left_split;
     }
-    if (my_strcmp(left->data.name, right->data.name) > 0) {
-        left->next = merge_name_rev(left->next, right);
-        return left;
+    if (my_strcmp(left_split->data.name, right_split->data.name) > 0) {
+        left_split->next = merge_name_rev(left_split->next, right_split);
+        return left_split;
     } else {
-        right->next = merge_name_rev(left, right->next);
-        return right;
+        right_split->next = merge_name_rev(left_split, right_split->next);
+        return right_split;
     }
 }
 
 void merge_sort_name_rev(linked_list_t **head_ref)
 {
     linked_list_t *head = *head_ref;
-    linked_list_t *left;
-    linked_list_t *right;
+    linked_list_t *left_split;
+    linked_list_t *right_split;
 
     if (head == NULL || head->next == NULL) {
         return;
     }
-    split(head, &left, &right);
-    merge_sort_name_rev(&left);
-    merge_sort_name_rev(&right);
-    *head_ref = merge_name_rev(left, right);
+    split(head, &left_split, &right_split);
+    merge_sort_name_rev(&left_split);
+    merge_sort_name_rev(&right_split);
+    *head_ref = merge_name_rev(left_split, right_split);
 }

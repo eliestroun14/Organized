@@ -19,21 +19,21 @@ void sub_split(linked_list_t **faster, linked_list_t **slower)
     }
 }
 
-// Function to split the linked list into two halves
-void split(linked_list_t *head, linked_list_t **start, linked_list_t **end)
+void split(linked_list_t *head, linked_list_t **pt_left,
+    linked_list_t **pt_right)
 {
     linked_list_t *slower;
     linked_list_t *faster;
 
     if (head == NULL || head->next == NULL) {
-        *start = head;
-        *end = NULL;
+        *pt_left = head;
+        *pt_right = NULL;
     } else {
         slower = head;
         faster = head->next;
         sub_split(&faster, &slower);
-        *start = head;
-        *end = slower->next;
+        *pt_left = head;
+        *pt_right = slower->next;
         slower->next = NULL;
     }
 }

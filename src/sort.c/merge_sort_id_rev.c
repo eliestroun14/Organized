@@ -8,36 +8,35 @@
 #include "../../include/my.h"
 #include <stddef.h>
 
-// Function to merge two linked lists in sorted order based on ID in reverse
-linked_list_t *merge_id_rev(linked_list_t *left, linked_list_t *right)
+linked_list_t *merge_id_rev(linked_list_t *left_split,
+    linked_list_t *right_split)
 {
-    if (left == NULL) {
-        return right;
+    if (left_split == NULL) {
+        return right_split;
     }
-    if (right == NULL) {
-        return left;
+    if (right_split == NULL) {
+        return left_split;
     }
-    if (left->data.id >= right->data.id) {
-        left->next = merge_id_rev(left->next, right);
-        return left;
+    if (left_split->data.id > right_split->data.id) {
+        left_split->next = merge_id_rev(left_split->next, right_split);
+        return left_split;
     } else {
-        right->next = merge_id_rev(left, right->next);
-        return right;
+        right_split->next = merge_id_rev(left_split, right_split->next);
+        return right_split;
     }
 }
 
-// Merge sort function for linked list based on ID in reverse
 void merge_sort_id_rev(linked_list_t **head_ref)
 {
     linked_list_t *head = *head_ref;
-    linked_list_t *left;
-    linked_list_t *right;
+    linked_list_t *left_split;
+    linked_list_t *right_split;
 
     if (head == NULL || head->next == NULL) {
         return;
     }
-    split(head, &left, &right);
-    merge_sort_id_rev(&left);
-    merge_sort_id_rev(&right);
-    *head_ref = merge_id_rev(left, right);
+    split(head, &left_split, &right_split);
+    merge_sort_id_rev(&left_split);
+    merge_sort_id_rev(&right_split);
+    *head_ref = merge_id_rev(left_split, right_split);
 }

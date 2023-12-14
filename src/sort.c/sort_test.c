@@ -69,26 +69,33 @@ static order_t *malloc_tab_order(char **args, int *count_param)
     return tab_order;
 }
 
-void handle_all_sort(order_t *tab_order, linked_list_t **head,
-    int tab_order_len)
+void handle_sort_loop(order_t *tab_order, linked_list_t **head, int i)
 {
-    if (tab_order[0].order == TYPE) {
-        if (tab_order[0].is_reverse)
+    if (tab_order[i].order == TYPE) {
+        if (tab_order[i].is_reverse)
             merge_sort_type_rev(head);
         else
             merge_sort_type(head);
     }
-    if (tab_order[0].order == NAME) {
-        if (tab_order[0].is_reverse)
+    if (tab_order[i].order == NAME) {
+        if (tab_order[i].is_reverse)
             merge_sort_name_rev(head);
         else
             merge_sort_name(head);
     }
-    if (tab_order[0].order == ID) {
-        if (tab_order[0].is_reverse)
+    if (tab_order[i].order == ID) {
+        if (tab_order[i].is_reverse)
             merge_sort_id_rev(head);
         else
             merge_sort_id(head);
+    }
+}
+
+void handle_all_sort(order_t *tab_order, linked_list_t **head,
+    int tab_order_len)
+{
+    for (int i = tab_order_len; i >= 0; i--) {
+        handle_sort_loop(tab_order, head, i);
     }
     return;
 }
@@ -99,6 +106,8 @@ int sort(UNUSED void *data, UNUSED char **args)
     order_t *tab_order = malloc_tab_order(args, &count_param);
     gloabal_link_t *global = (gloabal_link_t *)data;
 
+    if (count_param == 0)
+        return 84;
     for (int i = 0; args[i] != NULL; i++) {
         if (count_param > 3)
             return 84;

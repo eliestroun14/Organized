@@ -56,10 +56,12 @@ static int handle_del(char *args, linked_list_t *previous,
     return 0;
 }
 
-static int handle_err_del(char *arg)
+static int handle_err_del(char *arg, int max_val)
 {
     for (int j = 0; arg[j] != '\0'; j++) {
         if (!is_digit(arg[j]))
+            return 84;
+        if (my_getnbr(arg) > max_val)
             return 84;
     }
     return 0;
@@ -75,12 +77,12 @@ void check_del(char *arg, linked_list_t **previous,
     return;
 }
 
-int handle_all_err_del(char **args)
+int handle_all_err_del(char **args, int max_val)
 {
     if (args[0] == NULL)
         return 84;
     for (int i = 0; args[i] != NULL; i++)
-        if (handle_err_del(args[i]) == 84)
+        if (handle_err_del(args[i], max_val) == 84)
             return 84;
     return 0;
 }
@@ -92,7 +94,7 @@ int del(void *data, UNUSED char **args)
     linked_list_t *previous;
     linked_list_t *savior;
 
-    if (handle_all_err_del(args) == 84)
+    if (handle_all_err_del(args, global->nb_link) == 84)
         return 84;
     for (int i = 0; args[i] != NULL; i++) {
         tmp = global->head;

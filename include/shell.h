@@ -58,6 +58,16 @@ int del(void *data, char **args);
 int sort(void *data, char **args);
 int disp(void *data, char **args);
 
+// split merge
+void split(linked_list_t* head, linked_list_t** front, linked_list_t** back);
+void split_by_type(linked_list_t *head, linked_list_t **front,
+    linked_list_t **back);
+// merge sorts
+void merge_sort_id(linked_list_t **head_ref);
+void merge_sort_id_rev(linked_list_t **head_ref);
+void merge_sort_type(linked_list_t **head_ref);
+void merge_sort_type_rev(linked_list_t **head_ref);
+
 // Already implemented
 int workshop_shell(void *data);
 

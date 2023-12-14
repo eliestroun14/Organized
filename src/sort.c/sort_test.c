@@ -35,7 +35,7 @@ static int is_reverse_flag(char *arg)
 static int fill_order(order_t *tab_order, char **args, int count_nb)
 {
     int index = 0;
-    int tab_index;
+    int tab_index = 0;
 
     for (int i = 0; args[i] != NULL; i++) {
         tab_index = is_valid_sort_param(args[i]);
@@ -69,10 +69,33 @@ static order_t *malloc_tab_order(char **args, int *count_param)
     return tab_order;
 }
 
-//static void perform_sorting(linked_list_t order_t *tab_order, int num_orders)
-//{
-//    return 0;
-//}
+void handle_all_sort(order_t *tab_order, linked_list_t **head,
+    int tab_order_len)
+{
+    if (tab_order[0].order == TYPE) {
+        if (tab_order[0].is_reverse) {
+            merge_sort_type_rev(head);
+            return;
+        }
+        merge_sort_type(head);
+    }
+    if (tab_order[0].order == NAME) {
+        if (tab_order[0].is_reverse) {
+            //merge_sort_name_reverse();
+            return;
+        }
+        //merge_sort_name();
+    }
+    if (tab_order[0].order == ID) {
+        if (tab_order[0].is_reverse) {
+            merge_sort_id_rev(head);
+            return;
+        }
+        merge_sort_id(head);
+    }
+    return;
+}
+
 int sort(UNUSED void *data, UNUSED char **args)
 {
     int count_param = 0;
@@ -82,15 +105,11 @@ int sort(UNUSED void *data, UNUSED char **args)
     for (int i = 0; args[i] != NULL; i++) {
         if (count_param > 3)
             return 84;
-        if (is_valid_sort_param(args[i]) == -1 && !is_reverse_flag(args[i])) {
+        if (is_valid_sort_param(args[i]) == -1 && !is_reverse_flag(args[i]))
             return 84;
-        }
     }
     fill_order(tab_order, args, count_param);
-    for (int i = 0; i < count_param; i++) {
-        my_printf("tab_order[%d] == %d / %d\n", i,
-            tab_order[i].order, tab_order[i].is_reverse);
-    }
+    handle_all_sort(tab_order, &global->head, count_param);
     free(tab_order);
     return 0;
 }

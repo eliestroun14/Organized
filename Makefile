@@ -13,16 +13,29 @@ SRC		+= ./src/disp.c/disp.c
 SRC		+= ./src/sort.c/sort_test.c
 SRC		+= ./src/del.c/del.c
 
+SRC		+= ./src/sort.c/merge_split.c
+
+SRC		+= ./src/sort.c/merge_sort_id.c
+SRC		+= ./src/sort.c/merge_sort_id_rev.c
+SRC		+= ./src/sort.c/merge_sort_type.c
+SRC		+= ./src/sort.c/merge_sort_type_rev.c
+
+OBJS	= $(SRC:.c=.o)
+
 LDFLAGS	= -L. -lmy -lshell -I include/ -g -Wall -Wextra -pedantic
+
+	GREEN=\033[1;32m
+    YELLOW=\033[1;93m
+    GREY=\033[2;49m
+    ITALIC=\033[3m
+    NC=\033[0m
 
 LIB	= make -C lib/
 
 all: $(NAME)
-.PHONY:all
 
-$(NAME):
-	$(LIB)
-	gcc -o $(NAME) $(SRC) $(LDFLAGS)
+$(NAME): lib
+	@ gcc -o $(NAME) $(SRC) $(LDFLAGS)
 
 lib:
 	$(LIB)
@@ -34,11 +47,15 @@ tests_run:
 
 clean:
 	$(RM) $(OBJS)
-.PHONY:clean
 
 fclean: clean
 	$(RM) -f $(NAME)
-.PHONY:fclean
 
 re: fclean all
-.PHONY:re
+
+.c.o:
+	@ $(CC) -o $(subst .c,.o,$<) -c $< $(CFLAGS) \
+        && echo -e "[ ${GREEN}OK${NC} ] ${GREY}$<${NC}" \
+        || echo -e "[ ${YELLOW}KO${NC} ] ${ITALIC}$<${NC}"
+
+.PHONY:re fclean all clean tests_run lib .c .o

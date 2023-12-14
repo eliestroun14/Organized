@@ -68,8 +68,11 @@ static int handle_err_del(char *arg)
 void check_del(char *arg, linked_list_t **previous,
     gloabal_link_t **global, linked_list_t **tmp)
 {
-    if (!handle_del(arg, *previous, &(*global)->head, *tmp))
+    if (!handle_del(arg, *previous, &(*global)->head, *tmp)) {
         *previous = *tmp;
+        return;
+    }
+    return;
 }
 
 int handle_all_err_del(char **args)

@@ -17,7 +17,7 @@ linked_list_t *merge_id_rev(linked_list_t *left_split,
     if (right_split == NULL) {
         return left_split;
     }
-    if (left_split->data.id > right_split->data.id) {
+    if (left_split->data.id >= right_split->data.id) {
         left_split->next = merge_id_rev(left_split->next, right_split);
         return left_split;
     } else {

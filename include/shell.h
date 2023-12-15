@@ -48,9 +48,9 @@ typedef struct gloabal_link_s {
     int nb_link;
 } gloabal_link_t;
 
-USED static char const *type[] = {"ACTUATOR", "DEVICE", "PROCESSOR",
+UNUSED static char const *type[] = {"ACTUATOR", "DEVICE", "PROCESSOR",
     "SENSOR", "WIRE", NULL};
-USED static TYPE_e enum_tab[] = {ACTUATOR, DEVICE, PROCESSOR, SENSOR, WIRE };
+UNUSED static TYPE_e enum_tab[] = {ACTUATOR, DEVICE, PROCESSOR, SENSOR, WIRE };
 
 // To be implemented
 int add(void *data, char **args);

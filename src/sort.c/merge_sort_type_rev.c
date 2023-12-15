@@ -17,7 +17,7 @@ linked_list_t *merge_type_rev(linked_list_t *left_split,
     if (right_split == NULL) {
         return left_split;
     }
-    if (left_split->data.type > right_split->data.type) {
+    if (left_split->data.type >= right_split->data.type) {
         left_split->next = merge_type_rev(left_split->next, right_split);
         return left_split;
     } else {

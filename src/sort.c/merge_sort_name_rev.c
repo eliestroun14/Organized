@@ -17,7 +17,7 @@ linked_list_t *merge_name_rev(linked_list_t *left_split,
     if (right_split == NULL) {
         return left_split;
     }
-    if (my_strcmp(left_split->data.name, right_split->data.name) > 0) {
+    if (my_strcmp(left_split->data.name, right_split->data.name) >= 0) {
         left_split->next = merge_name_rev(left_split->next, right_split);
         return left_split;
     } else {

@@ -61,7 +61,7 @@ static int handle_err_del(char *arg, int max_val)
     for (int j = 0; arg[j] != '\0'; j++) {
         if (!is_digit(arg[j]))
             return 84;
-        if (my_getnbr(arg) > max_val)
+        if (my_getnbr(arg) > max_val - 1)
             return 84;
     }
     return 0;

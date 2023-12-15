@@ -94,7 +94,7 @@ void handle_sort_loop(order_t *tab_order, linked_list_t **head, int i)
 void handle_all_sort(order_t *tab_order, linked_list_t **head,
     int tab_order_len)
 {
-    for (int i = tab_order_len; i >= 0; i--) {
+    for (int i = tab_order_len - 1; i >= 0; i--) {
         handle_sort_loop(tab_order, head, i);
     }
     return;
